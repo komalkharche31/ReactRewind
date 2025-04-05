@@ -1,12 +1,15 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 export function Todolist(){
-    let [Todos, setTodos] = useState([{task:"Simple task", key:uuidv4()}])
+    let [Todos, setTodos] = useState([{task:"Simple task", key:uuidv4(), isDone:false}])
+
+   
+
     function AddNewTask() {
         const getTask = document.querySelector("#TodoName");       
         setTodos([
             ...Todos,
-            {task:getTask.value, key:uuidv4()}
+            {task:getTask.value, key:uuidv4() , isDone:false}
         ])
         document.querySelector('#TodoName').value = ''
     }
@@ -40,6 +43,32 @@ export function Todolist(){
         setTodos([...newTodoCopy])
     }
 
+    
+    function HandleMarkAsDone(key){
+        let newTodoCopy = Todos.map((prevTodo)=>{
+            if(prevTodo.key == key){
+                return {
+                    ...prevTodo,
+                    isDone:true
+                    }
+            }else{
+                return prevTodo
+            }
+               
+        })
+        setTodos([...newTodoCopy])
+    }
+    
+    function AllMarkAsDone(){
+        let newTodoCopy = Todos.map((prevTodo)=>{
+               return {
+                ...prevTodo,
+                isDone:true
+               }
+        })
+        setTodos([...newTodoCopy])       
+    }
+
     return (
         <>
             <input type="text" placeholder="Enter tasks" id="TodoName" style={{height:"35px"}}/>
@@ -49,19 +78,23 @@ export function Todolist(){
             <hr />           
             <ul>
             {
-                Todos.map((todo)=>(
-                    <li key={todo.key} style={{margin:"10px"}}>{todo.task}
+               
+                Todos.map((todo)=>(                   
+                    <li key={todo.key} style={ todo.isDone ? {margin:"10px",textDecoration:"line-through"} : { margin:"10px" }}> {todo.task}
                     &nbsp;
                     &nbsp;
                     &nbsp;
                     <button onClick={()=>deleteList(todo.key)}>Delete</button>
                     &nbsp; &nbsp;
                     <button onClick={()=>doOneUperCase(todo.key)}>UpperCase Me</button>
+                    &nbsp; &nbsp;
+                    <button onClick={()=>HandleMarkAsDone(todo.key)}>Mark As Done</button>
                     </li> 
                 ))
             }
             <br />
             <button onClick={doAllUperCase}>Create UpperCase</button>
+            <button onClick={AllMarkAsDone}>All Mark As Done</button>
            
 
             </ul> 
