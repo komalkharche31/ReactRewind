@@ -1,0 +1,12 @@
+.ticket{
+    border:2px solid pink;
+    height: 40px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+.ticket,span{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+} 
