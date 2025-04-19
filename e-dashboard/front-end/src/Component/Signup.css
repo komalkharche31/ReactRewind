@@ -1,0 +1,18 @@
+.register{
+    margin-left: 30%;
+    text-align: justify;
+}
+.inputBox{
+    width: 300px;
+    margin:20px;
+    padding: 5px;
+    display: block;
+    border: 1px solid;
+}
+.RegisterBtn{
+    background-color: skyblue;
+    cursor: pointer;
+    width: 300px;
+    height: 30px;
+    margin:20px;
+}

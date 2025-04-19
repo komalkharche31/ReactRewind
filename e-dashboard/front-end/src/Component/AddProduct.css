@@ -1,0 +1,19 @@
+.ProductDiv{
+    margin-left: 30%;
+}
+
+.ProductSaveBtn{
+    background-color: skyblue;
+    cursor: pointer;
+    width: 300px;
+    height: 30px;
+    margin:20px;
+}
+
+.InvalidInput{
+    color:red;
+    margin-left:20px
+}
+.LabelHeading{
+    margin-left:20px
+}
